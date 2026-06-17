@@ -8,6 +8,13 @@
 </head>
 <body>
 
+    <!-- 导航栏 -->
+    <div class="nav">
+        <button onclick="loadArticle('01')">第01篇</button>
+        <button onclick="loadArticle('02')">第02篇</button>
+        <button onclick="loadArticle('03')">第03篇</button>
+    </div>
+
     <div class="container" id="app">
         <div class="content-area" id="content">
             <p style="color:#999;">加载中...</p>
@@ -16,40 +23,41 @@
     </div>
 
     <script>
-        // 支持通过 URL 参数切换文章，如 ?file=article_02
-        const params = new URLSearchParams(window.location.search);
-        const file = params.get('file') || '01';
+        function loadArticle(file) {
+            fetch(`articles/${file}.json`)
+                .then(res => {
+                    if (!res.ok) throw new Error('文件未找到');
+                    return res.json();
+                })
+                .then(data => {
+                    const content = document.getElementById('content');
+                    const sidebar = document.getElementById('sidebar');
+                    content.innerHTML = '';
+                    sidebar.innerHTML = '';
 
-        fetch(`articles/${file}.json`)
-            .then(res => {
-                if (!res.ok) throw new Error('文件未找到');
-                return res.json();
-            })
-            .then(data => {
-                const content = document.getElementById('content');
-                const sidebar = document.getElementById('sidebar');
-                content.innerHTML = '';
-                sidebar.innerHTML = '';
+                    data.paragraphs.forEach(p => {
+                        // 左栏：中西对照
+                        content.innerHTML += `
+                            <div class="para-group">
+                                <div class="zh">${p.zh}</div>
+                                <div class="es">${p.es}</div>
+                            </div>`;
 
-                data.paragraphs.forEach(p => {
-                    // 左栏：中西对照
-                    content.innerHTML += `
-                        <div class="para-group">
-                            <div class="zh">${p.zh}</div>
-                            <div class="es">${p.es}</div>
-                        </div>`;
-
-                    // 右栏：词汇 + 句式
-                    sidebar.innerHTML += `
-                        <div class="section-title">固定搭配</div>
-                        <ul>${p.vocab.map(v => `<li>${v.zh} → <em>${v.es}</em></li>`).join('')}</ul>
-                        <div class="section-title">句式模板</div>
-                        <ul>${p.patterns.map(pt => `<li>${pt}</li>`).join('')}</ul>`;
+                        // 右栏：词汇 + 句式
+                        sidebar.innerHTML += `
+                            <div class="section-title">固定搭配</div>
+                            <ul>${p.vocab.map(v => `<li>${v.zh} → <em>${v.es}</em></li>`).join('')}</ul>
+                            <div class="section-title">句式模板</div>
+                            <ul>${p.patterns.map(pt => `<li>${pt}</li>`).join('')}</ul>`;
+                    });
+                })
+                .catch(err => {
+                    document.getElementById('content').innerHTML = `<p style="color:red;">⚠️ 加载失败：${err.message}</p>`;
                 });
-            })
-            .catch(err => {
-                document.getElementById('content').innerHTML = `<p style="color:red;">⚠️ 加载失败：${err.message}</p>`;
-            });
+        }
+
+        // 页面初始加载第01篇
+        loadArticle('01');
     </script>
 
 </body>
