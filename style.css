@@ -1,0 +1,121 @@
+/* ===== 基础 ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Times New Roman", "SimSun", serif;
+    padding: 30px;
+    color: #000;
+    background: #fff;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* ===== 导航栏 ===== */
+.nav {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+}
+
+.nav button {
+    margin-right: 10px;
+    padding: 5px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #000;
+    background: #fff;
+}
+
+.nav button:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* ===== 双栏布局 ===== */
+.container {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    gap: 20px;
+}
+
+/* ===== 左栏：中西对照 ===== */
+.content-area {
+    border-right: 1px solid #ccc;
+    padding-right: 20px;
+}
+
+.para-group {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #999;
+}
+
+.zh {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 8px;
+    line-height: 1.8;
+}
+
+.es {
+    font-size: 14px;
+    color: #222;
+    line-height: 1.9;
+}
+
+/* ===== 右栏：知识点 ===== */
+.sidebar {
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+.section-title {
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 6px;
+    line-height: 1.6;
+}
+
+li em {
+    font-style: italic;
+    color: #333;
+}
+
+/* ===== 打印优化 ===== */
+@media print {
+    body {
+        padding: 10px;
+    }
+
+    .nav {
+        display: none; /* 打印时隐藏按钮 */
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 65% 35%;
+    }
+
+    .content-area {
+        border-right: 1px solid #000;
+    }
+
+    .para-group {
+        page-break-inside: avoid;
+    }
+}
