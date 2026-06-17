@@ -1,0 +1,66 @@
+{
+  "title": "中国AI威胁论：冷战思维的数字版本",
+  "source": "人民日报",
+  "date": "2026-05",
+  "paragraphs": [
+    {
+      "zh": "皮尤研究中心数据显示，美国约五成成年人习惯通过{{社交媒体}}获取新闻资讯，其中18至29岁青年群体中，近四成把{{网红博主}}内容当作重要信息参考。“建设美国AI”此次宣传，正是精准瞄准TikTok、Instagram等年轻人聚集的社交平台。据美媒曝光，该组织{{委托}}专业营销公司，在社交平台以单条视频5000美元的酬劳签约网红博主，一边{{大肆宣传}}美国人工智能技术优势，一边{{刻意抹黑}}中国AI发展，不断散布中国人工智能会威胁美国国家安全、{{个人数据隐私}}、本土就业乃至青少年成长安全等论调。讽刺的是，美国在渲染“中国AI威胁论”的同时，却深度依赖中国市场；在{{标榜}}自由与创新的同时，却{{人为设置}}技术壁垒。这种{{言行不一}}，使其{{对外叙事}}缺乏基本说服力。",
+      "es": "Según datos del {{Centro de Investigación Pew}}, alrededor de la mitad de los adultos estadounidenses obtienen habitualmente información y noticias a través de las {{redes sociales}}. Entre los jóvenes de 18 a 29 años, cerca del 40 % considera el contenido de los {{influencers}} como una importante fuente de referencia informativa. La campaña de “Build AI in America” se dirigió precisamente a plataformas frecuentadas por los jóvenes, como TikTok e Instagram. Según revelaron medios estadounidenses, la organización contrató a una empresa profesional de marketing y firmó acuerdos con influencers por una remuneración de 5.000 dólares por vídeo publicado. Mientras {{promocionaban ampliamente}} las ventajas de la tecnología estadounidense de inteligencia artificial, también {{desacreditaban deliberadamente}} el desarrollo de la IA china, difundiendo constantemente la idea de que la inteligencia artificial china supone una amenaza para la seguridad nacional de Estados Unidos, la {{privacidad de los datos personales}}, el empleo local e incluso la seguridad en el crecimiento de los jóvenes. Lo irónico es que, mientras Estados Unidos alimenta la llamada “teoría de la amenaza de la IA china”, sigue {{dependiendo profundamente}} del mercado chino; y mientras {{proclama}} defender la libertad y la innovación, establece de forma artificial {{barreras tecnológicas}}. Esta {{contradicción entre palabras y hechos}} resta credibilidad a su {{narrativa internacional}}.",
+      "vocab": [
+        {
+          "zh": "社交媒体",
+          "es": "redes sociales"
+        },
+        {
+          "zh": "网红博主",
+          "es": "influencer"
+        },
+        {
+          "zh": "委托（专业公司）",
+          "es": "contratar a"
+        },
+        {
+          "zh": "大肆宣传",
+          "es": "promocionar ampliamente"
+        },
+        {
+          "zh": "刻意抹黑",
+          "es": "desacreditar deliberadamente"
+        },
+        {
+          "zh": "个人数据隐私",
+          "es": "privacidad de los datos personales"
+        },
+        {
+          "zh": "技术壁垒",
+          "es": "barreras tecnológicas"
+        },
+        {
+          "zh": "言行不一",
+          "es": "contradicción entre palabras y hechos"
+        },
+        {
+          "zh": "对外叙事",
+          "es": "narrativa internacional"
+        },
+        {
+          "zh": "深度依赖",
+          "es": "depender profundamente de"
+        },
+        {
+          "zh": "标榜",
+          "es": "proclamar"
+        },
+        {
+          "zh": "人为设置",
+          "es": "establecer de forma artificial"
+        }
+      ],
+      "patterns": [
+        "一边……一边…… → Mientras..., también...",
+        "讽刺的是，……的同时，却…… → Lo irónico es que, mientras..., sigue...",
+        "这种……使其…… → Esta + sust. + resta credibilidad a su..."
+      ]
+    }
+  ]
+}
