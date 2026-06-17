@@ -18,7 +18,7 @@
     <script>
         // 支持通过 URL 参数切换文章，如 ?file=article_02
         const params = new URLSearchParams(window.location.search);
-        const file = params.get('file') || 'article_01';
+        const file = params.get('file') || '01';
 
         fetch(`articles/${file}.json`)
             .then(res => {
