@@ -3,90 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>西语学习排版</title>
+    <title>西语精读</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="nav">
-        <button onclick="loadArticle('01')" id="btn-01">第01篇</button>
-        <button onclick="loadArticle('02')" id="btn-02">第02篇</button>
-        <button onclick="loadArticle('03')" id="btn-03">第03篇</button>
+<div class="nav">
+    <span class="nav-title">📖 西语精读</span>
+    <div class="nav-buttons">
+        <button onclick="loadArticle('01')">第01篇</button>
+        <button onclick="loadArticle('02')">第02篇</button>
+        <button onclick="loadArticle('03')">第03篇</button>
     </div>
+</div>
 
-    <div id="app">
-        <p style="color:#999;">加载中...</p>
+<div class="article-card" id="article-card">
+    <div id="content-wrapper">
+        <p style="color:#999;padding:20px;">加载中...</p>
     </div>
+</div>
 
-    <script>
-        function highlight(text) {
-            return text.replace(/\\{\\{(.+?)\\}\\}/g, '<span class="highlight">$1</span>');
-        }
+<script>
+    function highlight(text) {
+        return text.replace(/\{\{(.+?)\}\}/g, '<span class="hl">$1</span>');
+    }
 
-        function loadArticle(file) {
-            // 更新按钮状态
-            document.querySelectorAll('.nav button').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = document.getElementById('btn-' + file);
-            if (activeBtn) activeBtn.classList.add('active');
+    function loadArticle(file) {
+        fetch(`articles/${file}.json`)
+            .then(res => { if (!res.ok) throw new Error('文件未找到'); return res.json(); })
+            .then(data => {
+                const wrapper = document.getElementById('content-wrapper');
+                wrapper.innerHTML = '';
 
-            fetch('articles/' + file + '.json')
-                .then(res => {
-                    if (!res.ok) throw new Error('文件未找到');
-                    return res.json();
-                })
-                .then(data => {
-                    const app = document.getElementById('app');
-                    app.innerHTML = '';
+                data.paragraphs.forEach((p, idx) => {
+                    // 正文：左右对照
+                    const paraBlock = document.createElement('div');
+                    paraBlock.className = 'para-block';
+                    paraBlock.innerHTML = `
+                        <div class="col-zh">
+                            <div class="col-label">中文</div>
+                            <div class="col-text">${highlight(p.zh)}</div>
+                        </div>
+                        <div class="col-divider"></div>
+                        <div class="col-es">
+                            <div class="col-label">Español</div>
+                            <div class="col-text">${highlight(p.es)}</div>
+                        </div>
+                    `;
+                    wrapper.appendChild(paraBlock);
 
-                    data.paragraphs.forEach(p => {
-                        // 词汇列表
-                        const vocabItems = p.vocab.map(v => `
-                            <li>
-                                <span class="zh-word">${v.zh}</span>
-                                <span class="arrow">→</span>
-                                <span class="es-word">${v.es}</span>
-                            </li>`).join('');
+                    // 词汇区：固定搭配 + 句式模板
+                    const bottomBlock = document.createElement('div');
+                    bottomBlock.className = 'bottom-block';
 
-                        // 句式模板
-                        const patternItems = p.patterns.map(pt =>
-                            `<li>${pt}</li>`
-                        ).join('');
+                    const vocabItems = p.vocab.map(v =>
+                        `<div class="vocab-item">
+                            <span class="v-zh">${v.zh}</span>
+                            <span class="v-arrow">→</span>
+                            <span class="v-es">${v.es}</span>
+                        </div>`
+                    ).join('');
 
-                        app.innerHTML += `
-                            <div class="article-card">
+                    const patternItems = p.patterns.map(pt =>
+                        `<div class="pattern-item">▌ ${pt}</div>`
+                    ).join('');
 
-                                <!-- 上：中西对照 -->
-                                <div class="bilingual">
-                                    <div class="zh-col">${highlight(p.zh)}</div>
-                                    <div class="es-col">${highlight(p.es)}</div>
-                                </div>
+                    bottomBlock.innerHTML = `
+                        <div class="box vocab-box">
+                            <div class="box-title">📌 固定搭配</div>
+                            <div class="box-body">${vocabItems}</div>
+                        </div>
+                        <div class="box pattern-box">
+                            <div class="box-title">✏️ 句式模板</div>
+                            <div class="box-body">${patternItems}</div>
+                        </div>
+                    `;
+                    wrapper.appendChild(bottomBlock);
 
-                                <!-- 分隔线 -->
-                                <div class="divider"></div>
-
-                                <!-- 下：固定搭配 + 句式模板 -->
-                                <div class="knowledge">
-                                    <div class="vocab-section">
-                                        <div class="section-title">固定搭配</div>
-                                        <ul class="vocab-list">${vocabItems}</ul>
-                                    </div>
-                                    <div class="pattern-section">
-                                        <div class="section-title">句式模板</div>
-                                        <ul class="pattern-list">${patternItems}</ul>
-                                    </div>
-                                </div>
-
-                            </div>`;
-                    });
-                })
-                .catch(err => {
-                    document.getElementById('app').innerHTML =
-                        `<p style="color:red;">⚠️ 加载失败：${err.message}</p>`;
+                    // 篇间分隔
+                    if (idx < data.paragraphs.length - 1) {
+                        const sep = document.createElement('div');
+                        sep.className = 'para-sep';
+                        wrapper.appendChild(sep);
+                    }
                 });
-        }
+            })
+            .catch(err => {
+                document.getElementById('content-wrapper').innerHTML =
+                    `<p style="color:red;padding:20px;">⚠️ 加载失败：${err.message}</p>`;
+            });
+    }
 
-        loadArticle('01');
-    </script>
-
+    loadArticle('01');
+</script>
 </body>
 </html>

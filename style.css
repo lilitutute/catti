@@ -1,30 +1,30 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: "Times New Roman", "SimSun", serif;
-    padding: 30px 40px;
+    background: #f0f0f0;
+    padding: 30px 20px;
     color: #000;
-    background: #f5f5f5;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.9;
 }
 
 /* ===== 导航栏 ===== */
 .nav {
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 2.5px solid #000;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    max-width: 960px;
+    margin: 0 auto 20px auto;
 }
-
-.nav button {
-    padding: 5px 18px;
+.nav-title {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.nav-buttons button {
+    margin-left: 8px;
+    padding: 5px 16px;
     font-size: 13px;
     cursor: pointer;
     border: 1.5px solid #000;
@@ -32,169 +32,169 @@ body {
     font-family: inherit;
     transition: all 0.15s;
 }
-
-.nav button:hover,
-.nav button.active {
+.nav-buttons button:hover {
     background: #000;
     color: #fff;
 }
 
 /* ===== 文章卡片 ===== */
 .article-card {
+    max-width: 960px;
+    margin: 0 auto;
     background: #fff;
     border: 1.5px solid #000;
-    margin-bottom: 32px;
-    padding: 0;
+    padding: 32px 36px;
 }
 
-/* ===== 上半部分：中西对照 ===== */
-.bilingual {
+/* ===== 正文：左右对照 ===== */
+.para-block {
     display: grid;
-    grid-template-columns: 38% 62%;
-    min-height: 80px;
+    grid-template-columns: 38% 1px 62%;
+    gap: 0;
+    margin-bottom: 0;
 }
 
-.zh-col {
-    padding: 20px 20px 20px 24px;
-    border-right: 1.5px solid #000;
+/* 中间竖线 */
+.col-divider {
+    background: #ccc;
+    margin: 0 20px;
+}
+
+/* 列标签 */
+.col-label {
+    font-size: 10px;
     font-weight: bold;
-    font-size: 15px;
-    line-height: 2;
-    text-align: justify;
-    background: #fafafa;
-}
-
-.es-col {
-    padding: 20px 24px 20px 20px;
-    font-size: 14px;
-    line-height: 2;
-    text-align: justify;
-    color: #111;
-}
-
-/* 重点词汇高亮 */
-.highlight {
-    font-weight: bold;
-    border-bottom: 1.5px solid #000;
-    padding-bottom: 1px;
-}
-
-/* ===== 分隔线 ===== */
-.divider {
-    height: 1.5px;
-    background: #000;
-}
-
-/* ===== 下半部分：固定搭配 + 句式模板 ===== */
-.knowledge {
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
-/* 固定搭配 */
-.vocab-section {
-    padding: 16px 20px 20px 24px;
-    border-right: 1.5px solid #000;
-}
-
-/* 句式模板 */
-.pattern-section {
-    padding: 16px 24px 20px 20px;
-}
-
-.section-title {
-    font-weight: bold;
-    font-size: 12.5px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 12px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #000;
+    color: #888;
+    margin-bottom: 6px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #ddd;
 }
 
-/* 词汇表：三列对齐 */
-.vocab-list {
-    list-style: none;
-    padding: 0;
+.col-zh {
+    padding: 16px 20px 16px 0;
+}
+.col-es {
+    padding: 16px 0 16px 20px;
+}
+
+.col-text {
+    text-align: justify;
+    line-height: 2;
+}
+
+/* 中文：稍粗 */
+.col-zh .col-text {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* 西文：正常 */
+.col-es .col-text {
+    font-size: 13.5px;
+    font-weight: normal;
+}
+
+/* ===== 强调词：虚线下划线，不加粗 ===== */
+.hl {
+    font-weight: inherit;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-underline-offset: 3px;
+}
+
+/* ===== 段落分隔线 ===== */
+.para-sep {
+    border: none;
+    border-top: 1px dashed #bbb;
+    margin: 4px 0;
+}
+
+/* ===== 底部词汇区 ===== */
+.bottom-block {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 0;
+    border-top: 2px solid #000;
+    margin-top: 8px;
 }
 
-.vocab-list li {
-    font-size: 13px;
-    line-height: 1.6;
-    padding: 5px 0;
-    border-bottom: 1px dotted #ccc;
+.box {
+    padding: 0;
+}
+
+.vocab-box {
+    border-right: 1px solid #ddd;
+}
+
+/* 标题：深色底色 */
+.box-title {
+    background: #222;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+}
+
+.box-body {
+    padding: 12px 14px;
+}
+
+/* 固定搭配条目 */
+.vocab-item {
     display: grid;
-    grid-template-columns: auto 16px 1fr;
+    grid-template-columns: auto 20px 1fr;
     align-items: baseline;
     gap: 4px;
+    padding: 4px 0;
+    border-bottom: 1px dotted #ccc;
+    font-size: 12.5px;
+    line-height: 1.6;
 }
+.vocab-item:last-child { border-bottom: none; }
 
-.vocab-list li:last-child {
-    border-bottom: none;
-}
-
-.zh-word {
+.v-zh {
     font-weight: bold;
-    white-space: nowrap;
 }
-
-.arrow {
+.v-arrow {
     color: #888;
     text-align: center;
 }
-
-.es-word {
+.v-es {
     font-style: italic;
-    color: #222;
 }
 
-/* 句式模板 */
-.pattern-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.pattern-list li {
-    font-size: 13px;
+/* 句式模板条目 */
+.pattern-item {
+    font-size: 12.5px;
     line-height: 1.7;
-    padding: 6px 10px;
+    padding: 5px 0 5px 10px;
     border-left: 3px solid #000;
-    background: #fafafa;
-    color: #111;
+    margin-bottom: 8px;
 }
+.pattern-item:last-child { margin-bottom: 0; }
 
 /* ===== 打印 ===== */
 @media print {
     body {
-        padding: 10px 15px;
         background: #fff;
+        padding: 0;
     }
-
-    .nav {
-        display: none;
-    }
-
+    .nav { display: none; }
     .article-card {
-        border: 1.5px solid #000;
-        page-break-inside: avoid;
-        margin-bottom: 20px;
+        border: none;
+        padding: 10px 0;
+        max-width: 100%;
     }
-
-    .bilingual {
-        grid-template-columns: 38% 62%;
-    }
-
-    .zh-col {
-        background: #fff;
-    }
-
-    .pattern-list li {
-        background: #fff;
+    .para-block { page-break-inside: avoid; }
+    .bottom-block { page-break-inside: avoid; }
+    /* 打印时底色保留 */
+    .box-title {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: #222 !important;
+        color: #fff !important;
     }
 }
