@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>翻译备考</title>
+  <link rel="stylesheet" href="style-print.css"/>
+</head>
+<body>
+
+<div id="article-wrap">
+  <div class="loading">加载中…</div>
+</div>
+
+<script>
+  function highlight(text) {
+    return text.replace(/\{\{(.+?)\}\}/g, '<span class="hl">$1</span>');
+  }
+
+  async function render() {
+    const params = new URLSearchParams(location.search);
+    const name   = params.get('article') || '01';
+    const wrap   = document.getElementById('article-wrap');
+
+    let data;
+    try {
+      const res = await fetch('articles/' + name + '.json');
+      if (!res.ok) throw new Error();
+      data = await res.json();
+    } catch(e) {
+      wrap.innerHTML = '<p class="empty">文章加载失败</p>';
+      return;
+    }
+
+    let out = '<div class="article-header">'
+            + '<div class="article-title">' + data.title + '</div>'
+            + '<div class="article-meta">' + (data.source || '') + '&nbsp;&nbsp;' + (data.date || '') + '</div>'
+            + '</div>';
+
+    data.paragraphs.forEach(function(p, i) {
+      var vocabRows = (p.vocab || []).map(function(v) {
+        return '<tr><td class="v-zh">' + v.zh + '</td><td class="v-arrow">→</td><td class="v-es">' + v.es + '</td></tr>';
+      }).join('');
+
+      var patternRows = (p.patterns || []).map(function(pt) {
+        return '<div class="pattern-item">' + pt + '</div>';
+      }).join('');
+
+      var rightCol = '';
+      if (vocabRows.length > 0) {
+        rightCol += '<div class="right-section-label">固定搭配</div><table class="vocab-table">' + vocabRows + '</table>';
+      }
+      if (patternRows.length > 0) {
+        rightCol += '<div class="right-section-label">句式模板</div><div class="patterns">' + patternRows + '</div>';
+      }
+
+      out += '<div class="para-block">'
+           + '<div class="left-col">'
+           + '<div class="para zh-para">' + highlight(p.zh) + '</div>'
+           + '<div class="divider"></div>'
+           + '<div class="para es-para">' + highlight(p.es) + '</div>'
+           + '</div>'
+           + '<div class="right-col">' + rightCol + '</div>'
+           + '</div>';
+    });
+
+    wrap.innerHTML = out;
+  }
+
+  render();
+</script>
+</body>
+</html>
