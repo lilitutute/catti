@@ -1,9 +1,4 @@
-/* ===== 基础 ===== */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: "Times New Roman", "SimSun", serif;
@@ -14,13 +9,12 @@ body {
     line-height: 1.8;
 }
 
-/* ===== 导航栏 ===== */
+/* 导航栏 */
 .nav {
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 2px solid #000;
 }
-
 .nav button {
     margin-right: 10px;
     padding: 5px 14px;
@@ -29,50 +23,51 @@ body {
     border: 1px solid #000;
     background: #fff;
 }
-
 .nav button:hover {
     background: #000;
     color: #fff;
 }
 
-/* ===== 双栏布局 ===== */
+/* 双栏布局 */
 .container {
     display: grid;
     grid-template-columns: 65% 35%;
     gap: 20px;
 }
 
-/* ===== 左栏：中西对照 ===== */
+/* 左栏 */
 .content-area {
     border-right: 1px solid #ccc;
     padding-right: 20px;
 }
-
 .para-group {
     margin-bottom: 25px;
     padding-bottom: 20px;
     border-bottom: 1px dashed #999;
 }
-
 .zh {
     font-weight: bold;
     font-size: 15px;
-    margin-bottom: 8px;
-    line-height: 1.8;
+    margin-bottom: 10px;
+    line-height: 1.9;
 }
-
 .es {
     font-size: 14px;
     color: #222;
-    line-height: 1.9;
+    line-height: 2;
 }
 
-/* ===== 右栏：知识点 ===== */
+/* 高亮词汇 {{...}} */
+.highlight {
+    border-bottom: 1.5px solid #000;
+    font-weight: bold;
+}
+
+/* 右栏 */
 .sidebar {
     padding-left: 10px;
     font-size: 13px;
 }
-
 .section-title {
     font-weight: bold;
     text-decoration: underline;
@@ -80,42 +75,15 @@ body {
     margin-bottom: 6px;
     font-size: 13px;
 }
+ul { list-style: none; padding: 0; }
+li { margin-bottom: 6px; line-height: 1.6; }
+li em { font-style: italic; }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 6px;
-    line-height: 1.6;
-}
-
-li em {
-    font-style: italic;
-    color: #333;
-}
-
-/* ===== 打印优化 ===== */
+/* 打印 */
 @media print {
-    body {
-        padding: 10px;
-    }
-
-    .nav {
-        display: none; /* 打印时隐藏按钮 */
-    }
-
-    .container {
-        display: grid;
-        grid-template-columns: 65% 35%;
-    }
-
-    .content-area {
-        border-right: 1px solid #000;
-    }
-
-    .para-group {
-        page-break-inside: avoid;
-    }
+    .nav { display: none; }
+    body { padding: 10px; }
+    .container { display: grid; grid-template-columns: 65% 35%; }
+    .content-area { border-right: 1px solid #000; }
+    .para-group { page-break-inside: avoid; }
 }
