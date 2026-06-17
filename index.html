@@ -8,14 +8,13 @@
 </head>
 <body>
 
-    <!-- 导航栏 -->
     <div class="nav">
         <button onclick="loadArticle('01')">第01篇</button>
         <button onclick="loadArticle('02')">第02篇</button>
         <button onclick="loadArticle('03')">第03篇</button>
     </div>
 
-    <div class="container" id="app">
+    <div class="container">
         <div class="content-area" id="content">
             <p style="color:#999;">加载中...</p>
         </div>
@@ -23,43 +22,56 @@
     </div>
 
     <script>
-function loadArticle(file) {
-    fetch(`articles/${file}.json`)
-        .then(res => {
-            if (!res.ok) throw new Error('文件未找到');
-            return res.json();
-        })
-        .then(data => {
-            const content = document.getElementById('content');
-            const sidebar = document.getElementById('sidebar');
-            content.innerHTML = '';
-            sidebar.innerHTML = '';
+        function highlight(text) {
+            // 把 {{词}} 转成加粗下划线，去掉花括号
+            return text.replace(/\{\{(.+?)\}\}/g, '<span class="highlight">$1</span>');
+        }
 
-            data.paragraphs.forEach(p => {
-                // 把 {{词}} 转成高亮span
-                const zhText = p.zh.replace(/\{\{(.+?)\}\}/g, '<span class="highlight">$1</span>');
-                const esText = p.es.replace(/\{\{(.+?)\}\}/g, '<span class="highlight">$1</span>');
+        function loadArticle(file) {
+            fetch(`articles/${file}.json`)
+                .then(res => {
+                    if (!res.ok) throw new Error('文件未找到');
+                    return res.json();
+                })
+                .then(data => {
+                    const content = document.getElementById('content');
+                    const sidebar = document.getElementById('sidebar');
+                    content.innerHTML = '';
+                    sidebar.innerHTML = '';
 
-                content.innerHTML += `
-                    <div class="para-group">
-                        <div class="zh">${zhText}</div>
-                        <div class="es">${esText}</div>
-                    </div>`;
+                    data.paragraphs.forEach(p => {
+                        // 左栏：正文
+                        content.innerHTML += `
+                            <div class="para-group">
+                                <div class="zh">${highlight(p.zh)}</div>
+                                <div class="es">${highlight(p.es)}</div>
+                            </div>`;
 
-                sidebar.innerHTML += `
-                    <div class="section-title">固定搭配</div>
-                    <ul>${p.vocab.map(v => `<li>${v.zh} → <em>${v.es}</em></li>`).join('')}</ul>
-                    <div class="section-title">句式模板</div>
-                    <ul>${p.patterns.map(pt => `<li>${pt}</li>`).join('')}</ul>`;
-            });
-        })
-        .catch(err => {
-            document.getElementById('content').innerHTML = `<p style="color:red;">⚠️ 加载失败：${err.message}</p>`;
-        });
-}
+                        // 右栏：词汇表
+                        const vocabItems = p.vocab.map(v => `
+                            <li>
+                                <span class="zh-word">${v.zh}</span>
+                                <span class="arrow">→</span>
+                                <span class="es-word">${v.es}</span>
+                            </li>`).join('');
 
-loadArticle('01');
+                        const patternItems = p.patterns.map(pt => `
+                            <li>${pt}</li>`).join('');
 
+                        sidebar.innerHTML += `
+                            <div class="section-title">固定搭配</div>
+                            <ul class="vocab-list">${vocabItems}</ul>
+                            <div class="section-title">句式模板</div>
+                            <ul class="pattern-list">${patternItems}</ul>`;
+                    });
+                })
+                .catch(err => {
+                    document.getElementById('content').innerHTML =
+                        `<p style="color:red;">⚠️ 加载失败：${err.message}</p>`;
+                });
+        }
+
+        loadArticle('01');
     </script>
 
 </body>
