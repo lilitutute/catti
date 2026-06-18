@@ -30,7 +30,10 @@
 
     function loadArticle(file) {
         fetch(`articles/${file}.json`)
-            .then(res => { if (!res.ok) throw new Error('文件未找到'); return res.json(); })
+            .then(res => {
+                if (!res.ok) throw new Error('文件未找到');
+                return res.json();
+            })
             .then(data => {
                 const wrapper = document.getElementById('content-wrapper');
                 wrapper.innerHTML = '';
@@ -48,7 +51,7 @@
                             <div class="col-label">中文</div>
                             <div class="col-text">${highlight(p.zh)}</div>
                         </div>
-                        <div class="lang-divider"></div>
+                        <hr class="lang-divider">
                         <div class="lang-block es-block">
                             <div class="col-label">Español</div>
                             <div class="col-text">${highlight(p.es)}</div>
@@ -78,6 +81,7 @@
                     rowBlock.appendChild(vocabCol);
                     wrapper.appendChild(rowBlock);
 
+                    // 段落之间加分隔线
                     if (idx < data.paragraphs.length - 1) {
                         const sep = document.createElement('div');
                         sep.className = 'para-sep';
