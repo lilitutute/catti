@@ -3,10 +3,12 @@
     {
       "zh": "美国《纽约时报》近日刊文称，苹果等美国大企业将大量的实用技术、机械设备、工艺流程和人才拱手让给了中国，从而为中国提供了所需资源，帮助中国在稀土磁铁、太阳能硅片、钢铁和制药等领域取得主导地位。",
       "es": "Recientemente, The New York Times publicó un artículo afirmando que muchas empresas estadounidenses, incluida Apple, han \"regalado a China grandes cantidades de su conocimiento práctico, maquinaria, procesos y talento\", proporcionando así a China los recursos que necesitaba y beneficios para \"alcanzar el dominio en campos tan diversos como imanes de tierras raras, obleas solares, acero y productos farmacéuticos\".",
-      "vocab": [
+      "vocab_zh": [
         { "zh": "刊文", "es": "publicar un artículo" },
         { "zh": "实用技术", "es": "conocimiento práctico" },
-        { "zh": "工艺流程", "es": "procesos" },
+        { "zh": "工艺流程", "es": "procesos" }
+      ],
+      "vocab_es": [
         { "zh": "稀土", "es": "tierras raras" },
         { "zh": "太阳能硅片", "es": "obleas solares" },
         { "zh": "取得主导地位", "es": "alcanzar el dominio" }
@@ -15,21 +17,25 @@
     {
       "zh": "中国的发展和技术进步是靠外国大企业让出来的吗？显然，这是一种极其荒谬、傲慢的论调，背后隐藏着的是西方中心主义者的失落和执拗。",
       "es": "¿Es el progreso tecnológico de China algo que las principales corporaciones extranjeras \"han regalado\"? Detrás de esta afirmación, claramente absurda y arrogante, se esconde una frustración y terquedad de quienes están atrapados en una visión del mundo centrada en Occidente.",
-      "vocab": [
+      "vocab_zh": [
         { "zh": "技术进步", "es": "progreso tecnológico" },
         { "zh": "荒谬", "es": "absurdo" },
-        { "zh": "傲慢", "es": "arrogante" },
+        { "zh": "傲慢", "es": "arrogante" }
+      ],
+      "vocab_es": [
         { "zh": "西方中心主义", "es": "visión del mundo centrada en Occidente" }
       ]
     },
     {
       "zh": "首先，应当弄清楚当初大型跨国企业到中国拓展市场的根本动因。毫无疑问，跨国公司投资经营的基本动力来自对利润和安全边际最大化的追求。它们进入很多发展中国家，是用资本、技术和管理经验换取庞大市场、低成本供应链和超额利润。",
       "es": "Primero, necesitamos aclarar las razones fundamentales por las que las grandes corporaciones multinacionales eligieron expandir sus mercados en China. No hay duda de que la fuerza impulsora fundamental detrás de la inversión y operación de las multinacionales es la búsqueda de maximizar beneficios y márgenes de seguridad. Al entrar en economías en desarrollo, intercambian capital, tecnología y conocimientos gerenciales por acceso a enormes mercados, cadenas de suministro eficientes en costos y ganancias lucrativas.",
-      "vocab": [
+      "vocab_zh": [
         { "zh": "跨国企业", "es": "corporaciones multinacionales" },
         { "zh": "拓展市场", "es": "expandir mercados" },
         { "zh": "根本动因", "es": "razones fundamentales" },
-        { "zh": "安全边际", "es": "márgenes de seguridad" },
+        { "zh": "安全边际", "es": "márgenes de seguridad" }
+      ],
+      "vocab_es": [
         { "zh": "发展中国家", "es": "economías en desarrollo" },
         { "zh": "管理经验", "es": "conocimientos gerenciales" },
         { "zh": "供应链", "es": "cadenas de suministro" },
@@ -39,18 +45,22 @@
     {
       "zh": "跨国公司来到中国市场，遵循的是同一套商业逻辑，本质上是为利而来，而不是某些西方记者笔下的恩人叙事。",
       "es": "Esto también se aplica a su presencia en China. Se interesaron por lucro, más que por encajar en la llamada \"narrativa del benefactor\" que algunos periodistas occidentales difunden.",
-      "vocab": [
-        { "zh": "商业逻辑", "es": "lógica comercial" },
+      "vocab_zh": [
+        { "zh": "商业逻辑", "es": "lógica comercial" }
+      ],
+      "vocab_es": [
         { "zh": "恩人叙事", "es": "narrativa del benefactor" }
       ]
     },
     {
       "zh": "当然，我们并不否认外资为中国带来初始技术和管理经验的价值，但本质上双方是互惠的。而中国通过产业链供应链再造，在诸多领域形成优势地位，其中不少属于各国必争的前沿科技战略产业。说西方企业拱手相让是会让人笑掉大牙的。",
       "es": "Es cierto que la inversión extranjera ayudó a China a adquirir tecnologías en etapas tempranas y experiencia en gestión. Sin embargo, en el fondo, esta es una relación mutuamente beneficiosa. A través de la reestructuración de las cadenas industriales y de suministro, China ha desarrollado fortalezas competitivas en numerosos sectores, incluyendo muchas industrias estratégicas de vanguardia que son altamente disputadas en todo el mundo. Es ridículo afirmar que las empresas occidentales han \"regalado estas ventajas\".",
-      "vocab": [
+      "vocab_zh": [
         { "zh": "外资", "es": "inversión extranjera" },
         { "zh": "互惠", "es": "mutuamente beneficioso" },
-        { "zh": "产业链", "es": "cadenas industriales" },
+        { "zh": "产业链", "es": "cadenas industriales" }
+      ],
+      "vocab_es": [
         { "zh": "前沿科技", "es": "industrias de vanguardia" },
         { "zh": "战略产业", "es": "industrias estratégicas" }
       ]

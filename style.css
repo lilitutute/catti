@@ -46,7 +46,7 @@ body {
     padding: 12mm 8mm 12mm 18mm;
 }
 
-/* ===== 每段行块：左右并排 ===== */
+/* ===== 行块：左右并排 ===== */
 .row-block {
     display: grid;
     grid-template-columns: 1fr 42mm;
@@ -61,13 +61,7 @@ body {
 }
 
 .lang-block {
-    padding: 4pt 0;
-}
-
-.lang-divider {
-    border: none;
-    border-top: 0.5pt dashed #ddd;
-    margin: 2pt 0;
+    padding: 3pt 0;
 }
 
 /* ===== 中文 / ESPAÑOL 小标签 ===== */
@@ -93,11 +87,18 @@ body {
     font-weight: bold;
 }
 
+/* ===== 中西之间虚线（横跨整行）===== */
+.lang-divider-full {
+    border: none;
+    border-top: 0.5pt dashed #ddd;
+    margin: 3pt 0;
+}
+
 /* ===== 段落分隔线 ===== */
 .para-sep {
     border: none;
-    border-top: 0.5pt dashed #bbb;
-    margin: 6pt 0;
+    border-top: 0.8pt dashed #bbb;
+    margin: 7pt 0;
 }
 
 /* ===== 右侧词汇栏 ===== */
@@ -107,20 +108,19 @@ body {
     padding-top: 2pt;
 }
 
-/* 第一段：固定搭配标题 */
 .box-title {
     font-size: 7pt;
     font-weight: bold;
     letter-spacing: 1.5px;
     padding-bottom: 3pt;
-    margin-bottom: 6pt;
+    margin-bottom: 5pt;
     border-bottom: 1pt solid #000;
     color: #000;
 }
 
-/* 后续段：占位保持对齐（和 box-title 同高）*/
+/* 非第一段：占位对齐 */
 .box-title-spacer {
-    height: 16pt;
+    height: 0;
 }
 
 .box-body {
@@ -128,7 +128,7 @@ body {
 }
 
 .vocab-item {
-    padding: 3pt 0;
+    padding: 2.5pt 0;
     border-bottom: 0.5pt dotted #ccc;
     line-height: 1.5;
     display: flex;
@@ -166,8 +166,8 @@ body {
         padding: 0;
         width: 100%;
     }
-    .row-block { page-break-inside: auto; }
-    .lang-block { page-break-inside: avoid; }
-    .vocab-item { page-break-inside: avoid; }
+    .row-block { page-break-inside: avoid; }
+    .lang-divider-full { page-break-after: avoid; }
     .para-sep { page-break-after: avoid; }
+    .vocab-item { page-break-inside: avoid; }
 }

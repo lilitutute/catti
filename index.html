@@ -38,48 +38,74 @@
                 const wrapper = document.getElementById('content-wrapper');
                 wrapper.innerHTML = '';
 
-                data.paragraphs.forEach((p, idx) => {
-                    const rowBlock = document.createElement('div');
-                    rowBlock.className = 'row-block';
+                let isFirstVocab = true;
 
-                    // 左侧正文
-                    const textCol = document.createElement('div');
-                    textCol.className = 'text-col';
-                    textCol.innerHTML = `
-                        <div class="lang-block zh-block">
+                data.paragraphs.forEach((p, idx) => {
+
+                    // ── 中文行 ──
+                    const zhRow = document.createElement('div');
+                    zhRow.className = 'row-block';
+
+                    const zhText = document.createElement('div');
+                    zhText.className = 'text-col';
+                    zhText.innerHTML = `
+                        <div class="lang-block">
                             <div class="col-label">中文</div>
                             <div class="col-text">${highlight(p.zh)}</div>
                         </div>
-                        <div class="lang-divider"></div>
-                        <div class="lang-block es-block">
-                            <div class="col-label">ESPAÑOL</div>
-                            <div class="col-text">${highlight(p.es)}</div>
-                        </div>
                     `;
 
-                    // 右侧词汇栏
-                    const vocabCol = document.createElement('div');
-                    vocabCol.className = 'vocab-col';
-
-                    const vocabItems = (p.vocab || []).map(v =>
+                    const zhVocab = document.createElement('div');
+                    zhVocab.className = 'vocab-col';
+                    const zhItems = (p.vocab_zh || p.vocab || []).map(v =>
                         `<div class="vocab-item">
                             <span class="v-zh">${v.zh}</span>
                             <span class="v-es">${v.es}</span>
                         </div>`
                     ).join('');
-
-                    // 只有第一段显示「固定搭配」标题
-                    const titleHtml = idx === 0
+                    const zhTitle = isFirstVocab
                         ? `<div class="box-title">📌 固定搭配</div>`
                         : `<div class="box-title-spacer"></div>`;
+                    if (isFirstVocab) isFirstVocab = false;
+                    zhVocab.innerHTML = `${zhTitle}<div class="box-body">${zhItems}</div>`;
 
-                    vocabCol.innerHTML = `${titleHtml}<div class="box-body">${vocabItems}</div>`;
+                    zhRow.appendChild(zhText);
+                    zhRow.appendChild(zhVocab);
+                    wrapper.appendChild(zhRow);
 
-                    rowBlock.appendChild(textCol);
-                    rowBlock.appendChild(vocabCol);
-                    wrapper.appendChild(rowBlock);
+                    // 中西分隔虚线
+                    const innerSep = document.createElement('div');
+                    innerSep.className = 'lang-divider-full';
+                    wrapper.appendChild(innerSep);
 
-                    // 段落分隔线（最后一段不加）
+                    // ── 西语行 ──
+                    const esRow = document.createElement('div');
+                    esRow.className = 'row-block';
+
+                    const esText = document.createElement('div');
+                    esText.className = 'text-col';
+                    esText.innerHTML = `
+                        <div class="lang-block">
+                            <div class="col-label">ESPAÑOL</div>
+                            <div class="col-text">${highlight(p.es)}</div>
+                        </div>
+                    `;
+
+                    const esVocab = document.createElement('div');
+                    esVocab.className = 'vocab-col';
+                    const esItems = (p.vocab_es || []).map(v =>
+                        `<div class="vocab-item">
+                            <span class="v-zh">${v.zh}</span>
+                            <span class="v-es">${v.es}</span>
+                        </div>`
+                    ).join('');
+                    esVocab.innerHTML = `<div class="box-title-spacer"></div><div class="box-body">${esItems}</div>`;
+
+                    esRow.appendChild(esText);
+                    esRow.appendChild(esVocab);
+                    wrapper.appendChild(esRow);
+
+                    // 段落分隔线
                     if (idx < data.paragraphs.length - 1) {
                         const sep = document.createElement('div');
                         sep.className = 'para-sep';
