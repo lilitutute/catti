@@ -46,21 +46,16 @@ body {
     padding: 12mm 8mm 12mm 18mm;
 }
 
-/* ===== 整体左右布局 ===== */
-.layout {
+/* ===== 每段行块：左右并排 ===== */
+.row-block {
     display: grid;
     grid-template-columns: 1fr 42mm;
     gap: 0 5mm;
     align-items: start;
 }
 
-/* ===== 左侧正文列 ===== */
+/* ===== 左侧正文 ===== */
 .text-col {
-    display: flex;
-    flex-direction: column;
-}
-
-.para-block {
     display: flex;
     flex-direction: column;
 }
@@ -75,15 +70,14 @@ body {
     margin: 2pt 0;
 }
 
-/* ===== 列标签 ===== */
+/* ===== 中文 / ESPAÑOL 小标签 ===== */
 .col-label {
     font-size: 6.5pt;
     font-weight: bold;
     letter-spacing: 2px;
-    text-transform: uppercase;
     color: #555;
     margin-bottom: 4pt;
-    padding: 1.5pt 4pt;
+    padding: 1.5pt 5pt;
     background: #efefef;
     display: inline-block;
 }
@@ -106,13 +100,14 @@ body {
     margin: 6pt 0;
 }
 
-/* ===== 右侧固定搭配栏 ===== */
+/* ===== 右侧词汇栏 ===== */
 .vocab-col {
     border-left: 1pt solid #000;
     padding-left: 4mm;
     padding-top: 2pt;
 }
 
+/* 第一段：固定搭配标题 */
 .box-title {
     font-size: 7pt;
     font-weight: bold;
@@ -121,6 +116,11 @@ body {
     margin-bottom: 6pt;
     border-bottom: 1pt solid #000;
     color: #000;
+}
+
+/* 后续段：占位保持对齐（和 box-title 同高）*/
+.box-title-spacer {
+    height: 16pt;
 }
 
 .box-body {
@@ -166,7 +166,7 @@ body {
         padding: 0;
         width: 100%;
     }
-    .para-block { page-break-inside: auto; }
+    .row-block { page-break-inside: auto; }
     .lang-block { page-break-inside: avoid; }
     .vocab-item { page-break-inside: avoid; }
     .para-sep { page-break-after: avoid; }
