@@ -38,8 +38,35 @@
                 const wrapper = document.getElementById('content-wrapper');
                 wrapper.innerHTML = '';
 
-                // 右侧词汇栏：固定搭配标题只出现一次
-                const allVocab = data.paragraphs.map(p => p.vocab).flat();
+                // 左侧正文列
+                const textCol = document.createElement('div');
+                textCol.className = 'text-col';
+
+                data.paragraphs.forEach((p, idx) => {
+                    const block = document.createElement('div');
+                    block.className = 'para-block';
+                    block.innerHTML = `
+                        <div class="lang-block zh-block">
+                            <div class="col-label">中文</div>
+                            <div class="col-text">${highlight(p.zh)}</div>
+                        </div>
+                        <div class="lang-divider"></div>
+                        <div class="lang-block es-block">
+                            <div class="col-label">ESPAÑOL</div>
+                            <div class="col-text">${highlight(p.es)}</div>
+                        </div>
+                    `;
+                    textCol.appendChild(block);
+
+                    if (idx < data.paragraphs.length - 1) {
+                        const sep = document.createElement('div');
+                        sep.className = 'para-sep';
+                        textCol.appendChild(sep);
+                    }
+                });
+
+                // 右侧词汇栏：全文汇总，标题只出现一次
+                const allVocab = data.paragraphs.flatMap(p => p.vocab);
                 const vocabCol = document.createElement('div');
                 vocabCol.className = 'vocab-col';
                 const vocabItems = allVocab.map(v =>
@@ -52,31 +79,6 @@
                     <div class="box-title">📌 固定搭配</div>
                     <div class="box-body">${vocabItems}</div>
                 `;
-
-                // 左侧正文列
-                const textCol = document.createElement('div');
-                textCol.className = 'text-col';
-
-                data.paragraphs.forEach((p, idx) => {
-                    const block = document.createElement('div');
-                    block.className = 'para-block';
-                    block.innerHTML = `
-                        <div class="lang-block zh-block">
-                            <div class="col-text">${highlight(p.zh)}</div>
-                        </div>
-                        <div class="lang-divider"></div>
-                        <div class="lang-block es-block">
-                            <div class="col-text">${highlight(p.es)}</div>
-                        </div>
-                    `;
-                    textCol.appendChild(block);
-
-                    if (idx < data.paragraphs.length - 1) {
-                        const sep = document.createElement('div');
-                        sep.className = 'para-sep';
-                        textCol.appendChild(sep);
-                    }
-                });
 
                 // 组合布局
                 const layout = document.createElement('div');

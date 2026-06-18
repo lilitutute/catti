@@ -65,22 +65,27 @@ body {
     flex-direction: column;
 }
 
-/* 中文段：左侧浅灰竖线 */
-.zh-block {
-    border-left: 2.5pt solid #ccc;
-    padding: 4pt 0 4pt 6pt;
-}
-
-/* 西语段：左侧深色竖线 */
-.es-block {
-    border-left: 2.5pt solid #555;
-    padding: 4pt 0 4pt 6pt;
+.lang-block {
+    padding: 4pt 0;
 }
 
 .lang-divider {
     border: none;
     border-top: 0.5pt dashed #ddd;
-    margin: 3pt 0 3pt 0;
+    margin: 2pt 0;
+}
+
+/* ===== 列标签 ===== */
+.col-label {
+    font-size: 6.5pt;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 4pt;
+    padding: 1.5pt 4pt;
+    background: #efefef;
+    display: inline-block;
 }
 
 .col-text {
@@ -89,20 +94,16 @@ body {
     font-size: 9pt;
 }
 
-.es-block .col-text {
-    font-style: normal;
+/* ===== 强调词 ===== */
+.hl {
+    font-weight: bold;
 }
 
-/* 段落之间分隔 */
+/* ===== 段落分隔线 ===== */
 .para-sep {
     border: none;
     border-top: 0.5pt dashed #bbb;
     margin: 6pt 0;
-}
-
-/* ===== 强调词 ===== */
-.hl {
-    font-weight: bold;
 }
 
 /* ===== 右侧固定搭配栏 ===== */
