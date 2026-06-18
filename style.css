@@ -1,33 +1,31 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ===== 全局：锁定为 B5 印刷视图 ===== */
 body {
-    font-family: "Times New Roman", "SimSun", serif;
+    font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     background: #e8e8e8;
     padding: 20px;
     color: #000;
-    /* 用 pt 作为基准，与打印完全一致 */
-    font-size: 10pt;
+    font-size: 9pt;
     line-height: 1.65;
 }
 
-/* ===== 导航栏：不打印，宽度跟随卡片 ===== */
+/* ===== 导航栏 ===== */
 .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 182mm;          /* B5 宽度 */
+    width: 182mm;
     margin: 0 auto 12px auto;
 }
 .nav-title {
-    font-size: 13pt;
+    font-size: 12pt;
     font-weight: bold;
     letter-spacing: 2px;
 }
 .nav-buttons button {
     margin-left: 6px;
     padding: 3px 12px;
-    font-size: 9pt;
+    font-size: 8pt;
     cursor: pointer;
     border: 1px solid #000;
     background: #fff;
@@ -39,20 +37,19 @@ body {
     color: #fff;
 }
 
-/* ===== 文章卡片：精确 B5 宽度 ===== */
+/* ===== 文章卡片：B5 宽度 ===== */
 .article-card {
-    width: 182mm;           /* B5 纸宽 */
+    width: 182mm;
     margin: 0 auto;
     background: #fff;
     border: 1px solid #000;
-    /* 左右留白 15mm，上下 12mm，模拟打印边距 */
     padding: 12mm 15mm;
 }
 
 /* ===== 每段行：正文左 + 词汇右 ===== */
 .row-block {
     display: grid;
-    grid-template-columns: 1fr 44mm;   /* 右栏固定 44mm */
+    grid-template-columns: 1fr 42mm;
     gap: 0 5mm;
     align-items: start;
 }
@@ -67,7 +64,6 @@ body {
     padding: 5pt 0;
 }
 
-/* 中西分隔虚线 */
 .lang-divider {
     border: none;
     border-top: 0.5pt dashed #bbb;
@@ -76,11 +72,11 @@ body {
 
 /* 列标签 */
 .col-label {
-    font-size: 7pt;
+    font-size: 6.5pt;
     font-weight: bold;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #888;
+    color: #999;
     margin-bottom: 3pt;
     padding-bottom: 2pt;
     border-bottom: 0.5pt solid #ddd;
@@ -88,18 +84,18 @@ body {
 
 .col-text {
     text-align: justify;
-    line-height: 1.65;
+    line-height: 1.7;
 }
 
 /* 中文正文 */
 .zh-block .col-text {
-    font-size: 10pt;
-    font-weight: 600;
+    font-size: 9pt;
+    font-weight: normal;
 }
 
 /* 西文正文 */
 .es-block .col-text {
-    font-size: 9.5pt;
+    font-size: 9pt;
     font-weight: normal;
 }
 
@@ -123,13 +119,12 @@ body {
     padding-top: 5pt;
 }
 
-/* 标题 */
 .box-title {
-    font-size: 7.5pt;
+    font-size: 7pt;
     font-weight: bold;
     letter-spacing: 1.5px;
     padding-bottom: 3pt;
-    margin-bottom: 4pt;
+    margin-bottom: 6pt;
     border-bottom: 1pt solid #000;
     color: #000;
 }
@@ -138,24 +133,39 @@ body {
     padding: 0;
 }
 
-/* 固定搭配条目 */
+/* ===== 固定搭配条目：中西同行，靠左 ===== */
 .vocab-item {
-    display: grid;
-    grid-template-columns: auto 14pt 1fr;
-    align-items: baseline;
-    gap: 0;
-    padding: 2.5pt 0;
+    padding: 3pt 0;
     border-bottom: 0.5pt dotted #ccc;
-    font-size: 8.5pt;
     line-height: 1.5;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 4pt;
 }
-.vocab-item:last-child { border-bottom: none; }
+.vocab-item:last-child {
+    border-bottom: none;
+}
 
-.v-zh { font-weight: bold; }
-.v-arrow { color: #888; text-align: center; }
-.v-es { font-style: italic; }
+.v-zh {
+    font-size: 8.5pt;
+    font-weight: bold;
+    white-space: nowrap;
+}
 
-/* ===== 打印：直接输出，无需缩放 ===== */
+.v-es {
+    font-size: 8pt;
+    font-style: italic;
+    color: #333;
+}
+
+/* 箭头隐藏 */
+.v-arrow {
+    display: none;
+}
+
+/* ===== 打印 ===== */
 @media print {
     @page {
         size: B5;
