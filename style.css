@@ -36,23 +36,23 @@ body {
     background: #000;
     color: #fff;
 }
-
 /* ===== 文章卡片：B5 宽度 ===== */
 .article-card {
     width: 182mm;
     margin: 0 auto;
     background: #fff;
     border: 1px solid #000;
-    padding: 12mm 15mm;
+    padding: 12mm 8mm 12mm 18mm;  /* 左18mm装订，右8mm收窄 */
 }
 
-/* ===== 每段行：正文左 + 词汇右 ===== */
+/* ===== 每段行：词汇栏宽度不变 ===== */
 .row-block {
     display: grid;
-    grid-template-columns: 1fr 42mm;
+    grid-template-columns: 1fr 42mm;  /* 42mm保持不动，1fr自动填满剩余 */
     gap: 0 5mm;
     align-items: start;
 }
+
 
 /* ===== 左侧文本列 ===== */
 .text-col {
