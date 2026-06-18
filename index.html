@@ -36,25 +36,28 @@
                 wrapper.innerHTML = '';
 
                 data.paragraphs.forEach((p, idx) => {
-                    // 正文：左右对照
-                    const paraBlock = document.createElement('div');
-                    paraBlock.className = 'para-block';
-                    paraBlock.innerHTML = `
-                        <div class="col-zh">
+
+                    const rowBlock = document.createElement('div');
+                    rowBlock.className = 'row-block';
+
+                    // 左侧：中文上 + 西语下
+                    const textCol = document.createElement('div');
+                    textCol.className = 'text-col';
+                    textCol.innerHTML = `
+                        <div class="lang-block zh-block">
                             <div class="col-label">中文</div>
                             <div class="col-text">${highlight(p.zh)}</div>
                         </div>
-                        <div class="col-divider"></div>
-                        <div class="col-es">
+                        <div class="lang-divider"></div>
+                        <div class="lang-block es-block">
                             <div class="col-label">Español</div>
                             <div class="col-text">${highlight(p.es)}</div>
                         </div>
                     `;
-                    wrapper.appendChild(paraBlock);
 
-                    // 词汇区：固定搭配 + 句式模板
-                    const bottomBlock = document.createElement('div');
-                    bottomBlock.className = 'bottom-block';
+                    // 右侧：固定搭配
+                    const vocabCol = document.createElement('div');
+                    vocabCol.className = 'vocab-col';
 
                     const vocabItems = p.vocab.map(v =>
                         `<div class="vocab-item">
@@ -64,23 +67,17 @@
                         </div>`
                     ).join('');
 
-                    const patternItems = p.patterns.map(pt =>
-                        `<div class="pattern-item">▌ ${pt}</div>`
-                    ).join('');
-
-                    bottomBlock.innerHTML = `
-                        <div class="box vocab-box">
+                    vocabCol.innerHTML = `
+                        <div class="vocab-box">
                             <div class="box-title">📌 固定搭配</div>
                             <div class="box-body">${vocabItems}</div>
                         </div>
-                        <div class="box pattern-box">
-                            <div class="box-title">✏️ 句式模板</div>
-                            <div class="box-body">${patternItems}</div>
-                        </div>
                     `;
-                    wrapper.appendChild(bottomBlock);
 
-                    // 篇间分隔
+                    rowBlock.appendChild(textCol);
+                    rowBlock.appendChild(vocabCol);
+                    wrapper.appendChild(rowBlock);
+
                     if (idx < data.paragraphs.length - 1) {
                         const sep = document.createElement('div');
                         sep.className = 'para-sep';

@@ -1,33 +1,35 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ===== 全局：锁定为 B5 印刷视图 ===== */
 body {
     font-family: "Times New Roman", "SimSun", serif;
-    background: #f0f0f0;
-    padding: 30px 20px;
+    background: #e8e8e8;
+    padding: 20px;
     color: #000;
-    font-size: 14px;
-    line-height: 1.9;
+    /* 用 pt 作为基准，与打印完全一致 */
+    font-size: 10pt;
+    line-height: 1.65;
 }
 
-/* ===== 导航栏 ===== */
+/* ===== 导航栏：不打印，宽度跟随卡片 ===== */
 .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 960px;
-    margin: 0 auto 20px auto;
+    width: 182mm;          /* B5 宽度 */
+    margin: 0 auto 12px auto;
 }
 .nav-title {
-    font-size: 18px;
+    font-size: 13pt;
     font-weight: bold;
     letter-spacing: 2px;
 }
 .nav-buttons button {
-    margin-left: 8px;
-    padding: 5px 16px;
-    font-size: 13px;
+    margin-left: 6px;
+    padding: 3px 12px;
+    font-size: 9pt;
     cursor: pointer;
-    border: 1.5px solid #000;
+    border: 1px solid #000;
     background: #fff;
     font-family: inherit;
     transition: all 0.15s;
@@ -37,147 +39,128 @@ body {
     color: #fff;
 }
 
-/* ===== 文章卡片 ===== */
+/* ===== 文章卡片：精确 B5 宽度 ===== */
 .article-card {
-    max-width: 960px;
+    width: 182mm;           /* B5 纸宽 */
     margin: 0 auto;
     background: #fff;
-    border: 1.5px solid #000;
-    padding: 32px 36px;
+    border: 1px solid #000;
+    /* 左右留白 15mm，上下 12mm，模拟打印边距 */
+    padding: 12mm 15mm;
 }
 
-/* ===== 正文：左右对照 ===== */
-.para-block {
+/* ===== 每段行：正文左 + 词汇右 ===== */
+.row-block {
     display: grid;
-    grid-template-columns: 38% 1px 62%;
-    gap: 0;
-    margin-bottom: 0;
+    grid-template-columns: 1fr 44mm;   /* 右栏固定 44mm */
+    gap: 0 5mm;
+    align-items: start;
 }
 
-/* 中间竖线 */
-.col-divider {
-    background: #ccc;
-    margin: 0 20px;
+/* ===== 左侧文本列 ===== */
+.text-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.lang-block {
+    padding: 5pt 0;
+}
+
+/* 中西分隔虚线 */
+.lang-divider {
+    border: none;
+    border-top: 0.5pt dashed #bbb;
+    margin: 0;
 }
 
 /* 列标签 */
 .col-label {
-    font-size: 10px;
+    font-size: 7pt;
     font-weight: bold;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #888;
-    margin-bottom: 6px;
-    padding-bottom: 3px;
-    border-bottom: 1px solid #ddd;
-}
-
-.col-zh {
-    padding: 16px 20px 16px 0;
-}
-.col-es {
-    padding: 16px 0 16px 20px;
+    margin-bottom: 3pt;
+    padding-bottom: 2pt;
+    border-bottom: 0.5pt solid #ddd;
 }
 
 .col-text {
     text-align: justify;
-    line-height: 2;
+    line-height: 1.65;
 }
 
-/* 中文：稍粗 */
-.col-zh .col-text {
+/* 中文正文 */
+.zh-block .col-text {
+    font-size: 10pt;
     font-weight: 600;
-    font-size: 14px;
 }
 
-/* 西文：正常 */
-.col-es .col-text {
-    font-size: 13.5px;
+/* 西文正文 */
+.es-block .col-text {
+    font-size: 9.5pt;
     font-weight: normal;
 }
 
-/* ===== 强调词：虚线下划线，不加粗 ===== */
+/* ===== 强调词：无下划线 ===== */
 .hl {
     font-weight: inherit;
-    text-decoration: underline;
-    text-decoration-style: dashed;
-    text-underline-offset: 3px;
+    text-decoration: none;
 }
 
 /* ===== 段落分隔线 ===== */
 .para-sep {
     border: none;
-    border-top: 1px dashed #bbb;
-    margin: 4px 0;
+    border-top: 0.5pt dashed #bbb;
+    margin: 4pt 0;
 }
 
-/* ===== 底部词汇区 ===== */
-.bottom-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border-top: 2px solid #000;
-    margin-top: 8px;
+/* ===== 右侧固定搭配栏 ===== */
+.vocab-col {
+    border-left: 1pt solid #000;
+    padding-left: 4mm;
+    padding-top: 5pt;
 }
 
-.box {
-    padding: 0;
-}
-
-.vocab-box {
-    border-right: 1px solid #ddd;
-}
-
-/* 标题：深色底色 */
+/* 标题 */
 .box-title {
-    background: #222;
-    color: #fff;
-    font-size: 12px;
+    font-size: 7.5pt;
     font-weight: bold;
-    letter-spacing: 2px;
-    padding: 6px 14px;
+    letter-spacing: 1.5px;
+    padding-bottom: 3pt;
+    margin-bottom: 4pt;
+    border-bottom: 1pt solid #000;
+    color: #000;
 }
 
 .box-body {
-    padding: 12px 14px;
+    padding: 0;
 }
 
 /* 固定搭配条目 */
 .vocab-item {
     display: grid;
-    grid-template-columns: auto 20px 1fr;
+    grid-template-columns: auto 14pt 1fr;
     align-items: baseline;
-    gap: 4px;
-    padding: 4px 0;
-    border-bottom: 1px dotted #ccc;
-    font-size: 12.5px;
-    line-height: 1.6;
+    gap: 0;
+    padding: 2.5pt 0;
+    border-bottom: 0.5pt dotted #ccc;
+    font-size: 8.5pt;
+    line-height: 1.5;
 }
 .vocab-item:last-child { border-bottom: none; }
 
-.v-zh {
-    font-weight: bold;
-}
-.v-arrow {
-    color: #888;
-    text-align: center;
-}
-.v-es {
-    font-style: italic;
-}
+.v-zh { font-weight: bold; }
+.v-arrow { color: #888; text-align: center; }
+.v-es { font-style: italic; }
 
-/* 句式模板条目 */
-.pattern-item {
-    font-size: 12.5px;
-    line-height: 1.7;
-    padding: 5px 0 5px 10px;
-    border-left: 3px solid #000;
-    margin-bottom: 8px;
-}
-.pattern-item:last-child { margin-bottom: 0; }
-
-/* ===== 打印 ===== */
+/* ===== 打印：直接输出，无需缩放 ===== */
 @media print {
+    @page {
+        size: B5;
+        margin: 12mm 15mm;
+    }
     body {
         background: #fff;
         padding: 0;
@@ -185,16 +168,9 @@ body {
     .nav { display: none; }
     .article-card {
         border: none;
-        padding: 10px 0;
-        max-width: 100%;
+        padding: 0;
+        width: 100%;
     }
-    .para-block { page-break-inside: avoid; }
-    .bottom-block { page-break-inside: avoid; }
-    /* 打印时底色保留 */
-    .box-title {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-        background: #222 !important;
-        color: #fff !important;
-    }
+    .row-block { page-break-inside: avoid; }
+    .para-sep { page-break-after: avoid; }
 }
