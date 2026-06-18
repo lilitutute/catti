@@ -1,65 +1,58 @@
 {
-  "title": "中国AI威胁论：冷战思维的数字版本",
-  "source": "人民日报",
-  "date": "2026-05",
   "paragraphs": [
     {
-      "zh": "皮尤研究中心数据显示，美国约五成成年人习惯通过{{社交媒体}}获取新闻资讯，其中18至29岁青年群体中，近四成把{{网红博主}}内容当作重要信息参考。“建设美国AI”此次宣传，正是精准瞄准TikTok、Instagram等年轻人聚集的社交平台。据美媒曝光，该组织{{委托}}专业营销公司，在社交平台以单条视频5000美元的酬劳签约网红博主，一边{{大肆宣传}}美国人工智能技术优势，一边{{刻意抹黑}}中国AI发展，不断散布中国人工智能会威胁美国国家安全、{{个人数据隐私}}、本土就业乃至青少年成长安全等论调。讽刺的是，美国在渲染“中国AI威胁论”的同时，却深度依赖中国市场；在{{标榜}}自由与创新的同时，却{{人为设置}}技术壁垒。这种{{言行不一}}，使其{{对外叙事}}缺乏基本说服力。",
-      "es": "Según datos del {{Centro de Investigación Pew}}, alrededor de la mitad de los adultos estadounidenses obtienen habitualmente información y noticias a través de las {{redes sociales}}. Entre los jóvenes de 18 a 29 años, cerca del 40 % considera el contenido de los {{influencers}} como una importante fuente de referencia informativa. La campaña de “Build AI in America” se dirigió precisamente a plataformas frecuentadas por los jóvenes, como TikTok e Instagram. Según revelaron medios estadounidenses, la organización contrató a una empresa profesional de marketing y firmó acuerdos con influencers por una remuneración de 5.000 dólares por vídeo publicado. Mientras {{promocionaban ampliamente}} las ventajas de la tecnología estadounidense de inteligencia artificial, también {{desacreditaban deliberadamente}} el desarrollo de la IA china, difundiendo constantemente la idea de que la inteligencia artificial china supone una amenaza para la seguridad nacional de Estados Unidos, la {{privacidad de los datos personales}}, el empleo local e incluso la seguridad en el crecimiento de los jóvenes. Lo irónico es que, mientras Estados Unidos alimenta la llamada “teoría de la amenaza de la IA china”, sigue {{dependiendo profundamente}} del mercado chino; y mientras {{proclama}} defender la libertad y la innovación, establece de forma artificial {{barreras tecnológicas}}. Esta {{contradicción entre palabras y hechos}} resta credibilidad a su {{narrativa internacional}}.",
+      "zh": "美国《纽约时报》近日刊文称，苹果等美国大企业将大量的实用技术、机械设备、工艺流程和人才拱手让给了中国，从而为中国提供了所需资源，帮助中国在稀土磁铁、太阳能硅片、钢铁和制药等领域取得主导地位。",
+      "es": "Recientemente, The New York Times publicó un artículo afirmando que muchas empresas estadounidenses, incluida Apple, han \"regalado a China grandes cantidades de su conocimiento práctico, maquinaria, procesos y talento\", proporcionando así a China los recursos que necesitaba y beneficios para \"alcanzar el dominio en campos tan diversos como imanes de tierras raras, obleas solares, acero y productos farmacéuticos\".",
       "vocab": [
-        {
-          "zh": "社交媒体",
-          "es": "redes sociales"
-        },
-        {
-          "zh": "网红博主",
-          "es": "influencer"
-        },
-        {
-          "zh": "委托（专业公司）",
-          "es": "contratar a"
-        },
-        {
-          "zh": "大肆宣传",
-          "es": "promocionar ampliamente"
-        },
-        {
-          "zh": "刻意抹黑",
-          "es": "desacreditar deliberadamente"
-        },
-        {
-          "zh": "个人数据隐私",
-          "es": "privacidad de los datos personales"
-        },
-        {
-          "zh": "技术壁垒",
-          "es": "barreras tecnológicas"
-        },
-        {
-          "zh": "言行不一",
-          "es": "contradicción entre palabras y hechos"
-        },
-        {
-          "zh": "对外叙事",
-          "es": "narrativa internacional"
-        },
-        {
-          "zh": "深度依赖",
-          "es": "depender profundamente de"
-        },
-        {
-          "zh": "标榜",
-          "es": "proclamar"
-        },
-        {
-          "zh": "人为设置",
-          "es": "establecer de forma artificial"
-        }
-      ],
-      "patterns": [
-        "一边……一边…… → Mientras..., también...",
-        "讽刺的是，……的同时，却…… → Lo irónico es que, mientras..., sigue...",
-        "这种……使其…… → Esta + sust. + resta credibilidad a su..."
+        { "zh": "刊文", "es": "publicar un artículo" },
+        { "zh": "实用技术", "es": "conocimiento práctico" },
+        { "zh": "工艺流程", "es": "procesos" },
+        { "zh": "稀土", "es": "tierras raras" },
+        { "zh": "太阳能硅片", "es": "obleas solares" },
+        { "zh": "取得主导地位", "es": "alcanzar el dominio" }
+      ]
+    },
+    {
+      "zh": "中国的发展和技术进步是靠外国大企业让出来的吗？显然，这是一种极其荒谬、傲慢的论调，背后隐藏着的是西方中心主义者的失落和执拗。",
+      "es": "¿Es el progreso tecnológico de China algo que las principales corporaciones extranjeras \"han regalado\"? Detrás de esta afirmación, claramente absurda y arrogante, se esconde una frustración y terquedad de quienes están atrapados en una visión del mundo centrada en Occidente.",
+      "vocab": [
+        { "zh": "技术进步", "es": "progreso tecnológico" },
+        { "zh": "荒谬", "es": "absurdo" },
+        { "zh": "傲慢", "es": "arrogante" },
+        { "zh": "西方中心主义", "es": "visión del mundo centrada en Occidente" }
+      ]
+    },
+    {
+      "zh": "首先，应当弄清楚当初大型跨国企业到中国拓展市场的根本动因。毫无疑问，跨国公司投资经营的基本动力来自对利润和安全边际最大化的追求。它们进入很多发展中国家，是用资本、技术和管理经验换取庞大市场、低成本供应链和超额利润。",
+      "es": "Primero, necesitamos aclarar las razones fundamentales por las que las grandes corporaciones multinacionales eligieron expandir sus mercados en China. No hay duda de que la fuerza impulsora fundamental detrás de la inversión y operación de las multinacionales es la búsqueda de maximizar beneficios y márgenes de seguridad. Al entrar en economías en desarrollo, intercambian capital, tecnología y conocimientos gerenciales por acceso a enormes mercados, cadenas de suministro eficientes en costos y ganancias lucrativas.",
+      "vocab": [
+        { "zh": "跨国企业", "es": "corporaciones multinacionales" },
+        { "zh": "拓展市场", "es": "expandir mercados" },
+        { "zh": "根本动因", "es": "razones fundamentales" },
+        { "zh": "安全边际", "es": "márgenes de seguridad" },
+        { "zh": "发展中国家", "es": "economías en desarrollo" },
+        { "zh": "管理经验", "es": "conocimientos gerenciales" },
+        { "zh": "供应链", "es": "cadenas de suministro" },
+        { "zh": "超额利润", "es": "ganancias lucrativas" }
+      ]
+    },
+    {
+      "zh": "跨国公司来到中国市场，遵循的是同一套商业逻辑，本质上是为利而来，而不是某些西方记者笔下的恩人叙事。",
+      "es": "Esto también se aplica a su presencia en China. Se interesaron por lucro, más que por encajar en la llamada \"narrativa del benefactor\" que algunos periodistas occidentales difunden.",
+      "vocab": [
+        { "zh": "商业逻辑", "es": "lógica comercial" },
+        { "zh": "恩人叙事", "es": "narrativa del benefactor" }
+      ]
+    },
+    {
+      "zh": "当然，我们并不否认外资为中国带来初始技术和管理经验的价值，但本质上双方是互惠的。而中国通过产业链供应链再造，在诸多领域形成优势地位，其中不少属于各国必争的前沿科技战略产业。说西方企业拱手相让是会让人笑掉大牙的。",
+      "es": "Es cierto que la inversión extranjera ayudó a China a adquirir tecnologías en etapas tempranas y experiencia en gestión. Sin embargo, en el fondo, esta es una relación mutuamente beneficiosa. A través de la reestructuración de las cadenas industriales y de suministro, China ha desarrollado fortalezas competitivas en numerosos sectores, incluyendo muchas industrias estratégicas de vanguardia que son altamente disputadas en todo el mundo. Es ridículo afirmar que las empresas occidentales han \"regalado estas ventajas\".",
+      "vocab": [
+        { "zh": "外资", "es": "inversión extranjera" },
+        { "zh": "互惠", "es": "mutuamente beneficioso" },
+        { "zh": "产业链", "es": "cadenas industriales" },
+        { "zh": "前沿科技", "es": "industrias de vanguardia" },
+        { "zh": "战略产业", "es": "industrias estratégicas" }
       ]
     }
   ]
