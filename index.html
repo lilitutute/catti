@@ -38,56 +38,52 @@
                 const wrapper = document.getElementById('content-wrapper');
                 wrapper.innerHTML = '';
 
+                // 右侧词汇栏：固定搭配标题只出现一次
+                const allVocab = data.paragraphs.map(p => p.vocab).flat();
+                const vocabCol = document.createElement('div');
+                vocabCol.className = 'vocab-col';
+                const vocabItems = allVocab.map(v =>
+                    `<div class="vocab-item">
+                        <span class="v-zh">${v.zh}</span>
+                        <span class="v-es">${v.es}</span>
+                    </div>`
+                ).join('');
+                vocabCol.innerHTML = `
+                    <div class="box-title">📌 固定搭配</div>
+                    <div class="box-body">${vocabItems}</div>
+                `;
+
+                // 左侧正文列
+                const textCol = document.createElement('div');
+                textCol.className = 'text-col';
+
                 data.paragraphs.forEach((p, idx) => {
-
-                    const rowBlock = document.createElement('div');
-                    rowBlock.className = 'row-block';
-
-                    // 左侧：中文上 + 西语下
-                    const textCol = document.createElement('div');
-                    textCol.className = 'text-col';
-                    textCol.innerHTML = `
+                    const block = document.createElement('div');
+                    block.className = 'para-block';
+                    block.innerHTML = `
                         <div class="lang-block zh-block">
-                            <div class="col-label">中文</div>
                             <div class="col-text">${highlight(p.zh)}</div>
                         </div>
-                        <hr class="lang-divider">
+                        <div class="lang-divider"></div>
                         <div class="lang-block es-block">
-                            <div class="col-label">Español</div>
                             <div class="col-text">${highlight(p.es)}</div>
                         </div>
                     `;
+                    textCol.appendChild(block);
 
-                    // 右侧：固定搭配
-                    const vocabCol = document.createElement('div');
-                    vocabCol.className = 'vocab-col';
-
-                    const vocabItems = p.vocab.map(v =>
-                        `<div class="vocab-item">
-                            <span class="v-zh">${v.zh}</span>
-                            <span class="v-arrow">→</span>
-                            <span class="v-es">${v.es}</span>
-                        </div>`
-                    ).join('');
-
-                    vocabCol.innerHTML = `
-                        <div class="vocab-box">
-                            <div class="box-title">📌 固定搭配</div>
-                            <div class="box-body">${vocabItems}</div>
-                        </div>
-                    `;
-
-                    rowBlock.appendChild(textCol);
-                    rowBlock.appendChild(vocabCol);
-                    wrapper.appendChild(rowBlock);
-
-                    // 段落之间加分隔线
                     if (idx < data.paragraphs.length - 1) {
                         const sep = document.createElement('div');
                         sep.className = 'para-sep';
-                        wrapper.appendChild(sep);
+                        textCol.appendChild(sep);
                     }
                 });
+
+                // 组合布局
+                const layout = document.createElement('div');
+                layout.className = 'layout';
+                layout.appendChild(textCol);
+                layout.appendChild(vocabCol);
+                wrapper.appendChild(layout);
             })
             .catch(err => {
                 document.getElementById('content-wrapper').innerHTML =
